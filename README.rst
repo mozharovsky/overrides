@@ -44,19 +44,18 @@ Usage
 -----
 .. code-block:: python
 
-    from overrides import overrides
+    from overrides import override
+
 
     class SuperClass:
-
-        def method(self):
+        def method(self) -> int:
             """This is the doc for a method and will be shown in subclass method too!"""
             return 2
 
 
     class SubClass(SuperClass):
-
-        @overrides
-        def method(self):
+        @override
+        def method(self) -> int:
             return 1
 
 
@@ -66,57 +65,53 @@ Enforcing usage
 .. code-block:: python
 
 
-    from overrides import EnforceOverrides, final, overrides
+    from overrides import EnforceOverrides, final, override
+
 
     class SuperClass(EnforceOverrides):
-
         @final
-        def method(self):
+        def method(self) -> int:
             """This is the doc for a method and will be shown in subclass method too!"""
             return 2
 
-        def method2(self):
+        def method2(self) -> int:
             """This is the doc for a method and will be shown in subclass method too!"""
             return 2
 
         @staticmethod
-        def method3():
+        def method3() -> int:
             """This is the doc for a method and will be shown in subclass method too!"""
             return 2
 
 
     # THIS FAILS
     class SubClass1(SuperClass):
-
-        def method(self): # <-- overriding a final method
+        def method(self) -> int: # <-- overriding a final method
             return 1
 
 
     # THIS FAILS
     class SubClass2(SuperClass):
-
-        def method2(self): # <-- @overrides decorator missing
+        def method2(self) -> int: # <-- @override decorator missing
             return 1
 
 
     # THIS ONE IS OK
     class SubClass3(SuperClass):
-
-        @overrides
-        def method2(self):
+        @override
+        def method2(self) -> int:
             return 1
 
 
     # ENSURE THAT @classmethod AND @staticmethod ARE PLACED AT THE TOP
     class SubClass4(SuperClass):
-
         @staticmethod
-        @overrides
-        def method3():
+        @override
+        def method3() -> int:
             return 1
  
 Contributors
 ------------
 This project becomes a reality only through the work of all the people who contribute.
 
-mkorpela, drorasaf, ngoodman90, TylerYep, leeopop, donpatrice, jayvdb, joelgrus, lisyarus, soulmerge, rkr-at-dbx
+mkorpela, drorasaf, ngoodman90, TylerYep, leeopop, donpatrice, jayvdb, joelgrus, lisyarus, soulmerge, rkr-at-dbx, mozharovsky
