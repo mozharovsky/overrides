@@ -1,5 +1,5 @@
 #
-#  Copyright 2016 Keunhong Lee
+#  Copyright 2016-2021 Keunhong Lee & Eugene Mozharovsky
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -13,22 +13,21 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
-from typing import TypeVar
-from types import FunctionType
 
-__VERSION__ = "0.1"
+from typing import Callable, TypeVar
 
 
-_WrappedMethod = TypeVar("_WrappedMethod", bound=FunctionType)
+FuncType = TypeVar("FuncType", bound=Callable)
 
 
-def final(method: _WrappedMethod) -> _WrappedMethod:
+def final(func: FuncType) -> FuncType:
     """Decorator to indicate that the decorated method is finalized and cannot be overridden.
     The decorator code is executed while loading class. Using this method
     should have minimal runtime performance implications.
-    Currently, only methods with @overrides are checked.
+    Currently, only methods with `@override` are checked.
 
     How to use:
+    ```
     from overrides import final
 
     class SuperClass(object):
@@ -40,9 +39,10 @@ def final(method: _WrappedMethod) -> _WrappedMethod:
         @overrides
         def method(self): #causes an error
             return 1
+    ```
 
-    :raises  AssertionError if there exists a match in sub classes for the method name
-    :return  method
+    :raises  `AssertionError` if there exists a match in sub classes for the method name
+    :return  original method
     """
-    setattr(method, "__finalized__", True)
-    return method
+    setattr(func, "__finalized__", True)
+    return func
