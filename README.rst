@@ -38,7 +38,8 @@ Installation
 ------------
 .. code-block:: bash
 
-    $ pip install overrides
+    <s>$ pip install overrides</s>
+    $ pip install git+https://github.com/mozharovsky/overrides.git
 
 Usage
 -----
