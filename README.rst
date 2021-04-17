@@ -23,6 +23,12 @@ an instance of a class is created. This means that performance implications are 
 Version 2.8.0 is the last one that supports Python 2.7.
 Versions after that work with Python >= 3.6.
 
+Copyright Disclaimer
+--------------------
+
+Please note, this repository and published pip package is a fork of the `original implementation <https://github.com/mkorpela/overrides>`_. 
+It's being distributed separately as it breaks backward compatibility with previous versions.
+
 Why explicit overrides?
 -----------------------
 
@@ -38,13 +44,13 @@ Installation
 ------------
 .. code-block:: bash
 
-    $ pip install git+https://github.com/mozharovsky/overrides.git
+    $ pip install overrides-extension
 
 Usage
 -----
 .. code-block:: python
 
-    from overrides import override
+    from overrides_extension import override
 
 
     class SuperClass:
@@ -65,7 +71,7 @@ Enforcing usage
 .. code-block:: python
 
 
-    from overrides import EnforceOverrides, final, override
+    from overrides_extension import EnforceOverrides, final, override
 
 
     class SuperClass(EnforceOverrides):
