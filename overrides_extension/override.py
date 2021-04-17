@@ -19,8 +19,6 @@ import inspect
 from inspect import FrameInfo
 from typing import Any, Callable, Dict, List, Tuple, Type, TypeVar
 
-__VERSION__ = "3.2.0"
-
 
 FuncType = TypeVar("FuncType", bound=Callable)
 
@@ -38,7 +36,7 @@ def override(func: FuncType) -> FuncType:
 
     How to use:
     ```
-    from overrides import override
+    from overrides_extension import override
 
 
     class SuperClass(object):
