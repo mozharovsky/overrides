@@ -1,11 +1,11 @@
 import unittest
 from typing import Generic, TypeVar
 
-from overrides import override
+from overrides_extension import override
 
-import test_somepackage
+from tests.test_somepackage import SomeClass
 
-TObject = TypeVar("TObject", bound=test_somepackage.SomeClass)
+TObject = TypeVar("TObject", bound=SomeClass)
 
 
 class SubClassOfGeneric(Generic[TObject]):
@@ -38,7 +38,7 @@ class Subber(SuperClass):
         return 1
 
 
-class Sub2(test_somepackage.SomeClass, SuperClass):
+class Sub2(SomeClass, SuperClass):
     @override
     def somewhat_fun_method(self) -> str:
         return "foo"

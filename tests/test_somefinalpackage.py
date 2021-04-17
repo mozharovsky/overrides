@@ -1,4 +1,4 @@
-from overrides import final
+from overrides_extension import final
 
 
 class SomeClass(object):

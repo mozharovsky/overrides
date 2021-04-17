@@ -1,6 +1,6 @@
 import unittest
 
-from overrides import final, override
+from overrides_extension import final, override
 
 import tests.test_somefinalpackage as test_somefinalpackage
 

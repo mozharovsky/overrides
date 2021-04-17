@@ -1,6 +1,6 @@
 import unittest
 
-from overrides import EnforceOverrides, final, override
+from overrides_extension import EnforceOverrides, final, override
 
 
 class Enforcing(EnforceOverrides):

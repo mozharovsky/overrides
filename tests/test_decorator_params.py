@@ -1,6 +1,6 @@
 from typing import Callable, Type
 
-from overrides import override
+from overrides_extension import override
 
 
 class SuperClass:
